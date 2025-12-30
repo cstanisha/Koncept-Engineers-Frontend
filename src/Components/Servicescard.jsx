@@ -1,7 +1,18 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Cpu, Wifi, BarChart2, Wrench, Monitor, Camera, Brain, FocusIcon, BuildingIcon } from "lucide-react";
+import {
+  Cpu,
+  Wifi,
+  BarChart2,
+  Wrench,
+  Monitor,
+  Camera,
+  Brain,
+  FocusIcon,
+  BuildingIcon,
+} from "lucide-react";
 import { Link } from "react-router-dom";
+
 import bim from "../assets/bim.jpg";
 import iot from "../assets/IOT.jpg";
 import dataanalytics from "../assets/Dataanalytics.jpg";
@@ -12,6 +23,7 @@ import aimlintegration from "../assets/aimlintegration.jpg";
 import vrartechnologies from "../assets/vrartechnologies.jpg";
 import embeddedsolutions from "../assets/embeddedsolutions.jpg";
 
+/* ---------------- DATA ---------------- */
 
 const services = [
   {
@@ -43,7 +55,7 @@ const services = [
     image: predictive,
   },
   {
-    id: "Cloud-Services",
+    id: "cloud-services",
     icon: <Monitor size={60} />,
     title: "Cloud Services",
     desc: "Remote servicing in building automation represents a significant advancement in facility management.",
@@ -56,15 +68,13 @@ const services = [
     desc: "Video analytics significantly enhances security and fire alarm systems by adding intelligence to visual data.",
     image: videoanalytics,
   },
-
   {
-    id: "AI-ML-integration",
+    id: "ai-ml-integration",
     icon: <Brain size={60} />,
     title: "AI/ML Integration",
     desc: "AI and machine learning enable predictive insights, automation, and intelligent decision-making across smart systems.",
     image: aimlintegration,
   },
-
   {
     id: "embedded-solutions",
     icon: <Cpu size={60} />,
@@ -72,7 +82,6 @@ const services = [
     desc: "Robust embedded systems designed for real-time processing, control, and seamless integration with smart infrastructure.",
     image: embeddedsolutions,
   },
-
   {
     id: "vr-ar-technologies",
     icon: <FocusIcon size={60} />,
@@ -80,64 +89,71 @@ const services = [
     desc: "Immersive VR and AR solutions for visualization, simulation, training, and enhanced digital experiences.",
     image: vrartechnologies,
   },
-
 ];
 
+/* ---------------- CARD ---------------- */
+
 const ServiceCard = ({ service }) => {
-  const [isHovered, setIsHovered] = useState(false);
+  const [hovered, setHovered] = useState(false);
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
+    <motion.article
+      initial={{ opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 1 }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className="relative p-8 rounded-2xl bg-[#121520] shadow-lg overflow-hidden
-                 hover:shadow-teal-500/50 transition-all hover:-translate-y-2
-                 h-full flex flex-col"
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className="relative bg-[#121520] rounded-2xl shadow-lg
+                 overflow-hidden transition-all
+                 hover:-translate-y-2 hover:shadow-teal-500/40"
     >
-      {/* Hover background */}
+      {/* hover image (always mounted = no lag) */}
       <img
         src={service.image}
         alt=""
         loading="lazy"
         decoding="async"
-        className={`absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500
-          ${isHovered ? "opacity-20" : ""}`}
+        className={`absolute inset-0 w-full h-full object-cover
+          transition-opacity duration-300
+          ${hovered ? "opacity-20" : "opacity-0"}`}
       />
 
-      {/* Content */}
-      <div className="relative z-10 flex flex-col h-full">
-        <div className="mb-5 text-teal-400">{service.icon}</div>
+      {/* content */}
+      <div className="relative z-10 p-8 flex flex-col h-full">
+        <div className="mb-6 text-teal-400">{service.icon}</div>
 
-        <h4 className="text-teal-400 font-semibold mb-2">
+        <h4 className="text-teal-400 font-semibold mb-3">
           {service.title}
         </h4>
 
-        <p className="text-gray-300 mb-6 flex-grow">
+        {/* THIS LINE MAKES ALIGNMENT VISIBLE */}
+        <p className="text-gray-300 leading-relaxed flex-1">
           {service.desc}
         </p>
 
-        <Link to={`/services#${service.id}`} className="mt-auto">
-          <button className="bg-[#009FB2] hover:bg-[#0083A0] text-white px-6 py-3 rounded-full shadow-md transition-all">
+        <Link to={`/services#${service.id}`} className="pt-6">
+          <button className="bg-[#009FB2] hover:bg-[#0083A0]
+                             text-white px-6 py-3 rounded-full
+                             shadow-md transition-all">
             Learn More
           </button>
         </Link>
       </div>
-    </motion.div>
+    </motion.article>
   );
 };
 
+/* ---------------- GRID ---------------- */
 
 const ServicesCards = () => {
   return (
-    <section className="bg-[#142132] py-20 text-white">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-          {services.map((service, i) => (
-            <ServiceCard key={i} service={service} />
+    <section className="bg-[#142132] py-20">
+      <div className="max-w-7xl mx-auto px-6">
+        {/* 👇 THIS is what forces equal height rows */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 items-stretch">
+          {services.map((service) => (
+            <ServiceCard key={service.id} service={service} />
           ))}
         </div>
       </div>
@@ -146,3 +162,4 @@ const ServicesCards = () => {
 };
 
 export default ServicesCards;
+
