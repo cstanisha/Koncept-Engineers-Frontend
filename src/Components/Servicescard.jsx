@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Cpu, Wifi, BarChart2, Wrench, Monitor, Camera, Brain, FocusIcon ,BuildingIcon } from "lucide-react";
+import { Cpu, Wifi, BarChart2, Wrench, Monitor, Camera, Brain, FocusIcon, BuildingIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 import bim from "../assets/bim.jpg";
 import iot from "../assets/IOT.jpg";
@@ -91,23 +91,36 @@ const ServiceCard = ({ service }) => {
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 1.5 }}
-      className="relative p-8 rounded-2xl bg-[#121520] shadow-lg overflow-hidden hover:shadow-teal-500/50 transition-all hover:-translate-y-2"
+      transition={{ duration: 1 }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      className="relative p-8 rounded-2xl bg-[#121520] shadow-lg overflow-hidden
+                 hover:shadow-teal-500/50 transition-all hover:-translate-y-2
+                 h-full flex flex-col"
     >
-      {isHovered && (
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-20 transition-all duration-500"
-          style={{ backgroundImage: `url(${service.image})` }}
-        ></div>
-      )}
+      {/* Hover background */}
+      <img
+        src={service.image}
+        alt=""
+        loading="lazy"
+        decoding="async"
+        className={`absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500
+          ${isHovered ? "opacity-20" : ""}`}
+      />
 
-      <div className="relative z-10">
-        <div className="text-white-400 mb-5">{service.icon}</div>
-        <h4 className="text-teal-400 font-semibold mb-2">{service.title}</h4>
-        <p className="text-gray-300 mb-6">{service.desc}</p>
-        <Link to={`/services#${service.id}`}>
+      {/* Content */}
+      <div className="relative z-10 flex flex-col h-full">
+        <div className="mb-5 text-teal-400">{service.icon}</div>
+
+        <h4 className="text-teal-400 font-semibold mb-2">
+          {service.title}
+        </h4>
+
+        <p className="text-gray-300 mb-6 flex-grow">
+          {service.desc}
+        </p>
+
+        <Link to={`/services#${service.id}`} className="mt-auto">
           <button className="bg-[#009FB2] hover:bg-[#0083A0] text-white px-6 py-3 rounded-full shadow-md transition-all">
             Learn More
           </button>
@@ -116,6 +129,7 @@ const ServiceCard = ({ service }) => {
     </motion.div>
   );
 };
+
 
 const ServicesCards = () => {
   return (
