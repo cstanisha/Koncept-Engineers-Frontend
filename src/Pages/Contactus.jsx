@@ -43,14 +43,44 @@ const ContactUs = () => {
 
   const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (validate()) {
-      console.log("Form submitted:", formData);
-      alert("Form submitted successfully!");
-      setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
+    if (!validate()) return;
+
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/enquiry/create`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Something went wrong");
+      }
+
+      alert("Thank you! Your enquiry has been submitted.");
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
+      });
+      setErrors({});
+    } catch (error) {
+      console.error("Enquiry error:", error);
+      alert("Failed to submit enquiry. Please try again later.");
     }
   };
+
+
 
   return (
     <div>
