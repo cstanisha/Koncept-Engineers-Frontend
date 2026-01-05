@@ -41,7 +41,7 @@ const HeroStat = () => {
       <Counter end={2012} suffix="" label="Year Of Establishment" />
       <Counter end={300} suffix="+" label="Projects Delivered" />
       <Counter end={120} suffix="+" label="Employees & Growing" />
-      <Counter end={10} suffix="+" label="Years of R&D Experience in Embedded" />
+      <Counter end={13} suffix="+" label="Years of R&D Experience in Embedded" />
     </div>
   </div>
 </section>

@@ -35,7 +35,13 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-10">
         {/* Logo and Socials */}
         <div>
-          <img src={logo} alt="Koncept Engineers Logo" className="w-32 mb-4" />
+          <img
+            src={logo}
+            alt="Koncept Engineers Logo"
+            fetchpriority="high"
+            decoding="async"
+            className="w-40 md:w-56 lg:w-64 mb-8"
+          />
           <p className="mb-4">
             Together, we create sustainable, efficient, and secure environments that enhance lives and drive progress in the digital age.
           </p>
@@ -111,20 +117,35 @@ const Footer = () => {
       </div>
 
       {/* Partner Logos */}
-      <div className="border-t border-gray-700 mt-10 pt-6">
-        <h3 className="text-center mb-6 text-xl font-semibold">Our Partners</h3>
-        <div className="flex flex-wrap justify-center gap-8">
+      <div className="border-t border-gray-700 mt-14 pt-10">
+        <h3 className="text-center mb-10 text-2xl font-semibold tracking-wide">
+          Our Partners
+        </h3>
+
+        <div className="flex flex-wrap justify-center gap-12">
           {partners.map((partner, index) => (
             <motion.img
               key={index}
               src={partner}
               alt={`Partner ${index + 1}`}
-              className="w-24 h-24 object-contain cursor-pointer"
-              whileHover={{ scale: 1.1, boxShadow: "0px 0px 8px rgba(0, 255, 255, 0.5)" }}
+              className="
+          w-32 h-32
+          md:w-36 md:h-36
+          object-contain
+          cursor-pointer
+          transition-transform
+          duration-300
+        "
+              whileHover={{
+                scale: 1.08,
+                boxShadow: "0px 8px 20px rgba(0, 0, 0, 0.25)",
+              }}
             />
           ))}
         </div>
       </div>
+
+
 
       {/* Scroll to top */}
       <button

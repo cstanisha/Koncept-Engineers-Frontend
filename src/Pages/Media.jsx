@@ -7,9 +7,36 @@ const mediaImages = Object.values(
 );
 
 const Media = () => {
-  const featured = mediaImages.slice(0, 3);
+  /* ================= FEATURED DATA ================= */
+  const featured = [
+    {
+      image: mediaImages[0],
+      tag: "Industry Event",
+      title: "Siemens Transformation Day 2023",
+      description:
+        "A landmark industry event highlighting digital transformation, innovation, and future-ready technologies.",
+    },
+    {
+      image: mediaImages[1],
+      tag: "Conference | Exhibition",
+      title: "DRDO Exhibition | Emerging Tech in Infrastructure Development",
+      description:
+        "Koncept Engineers showcased their work at the DRDO conference, presenting emerging technologies shaping modern infrastructure.",
+    },
+    {
+      image: mediaImages[2],
+      tag: "Industry Event",
+      title: "Siemens Innovation Day 2024",
+      description:
+        "Exploring next-generation engineering solutions, digital innovation, and collaborative technology advancements.",
+    },
+  ];
+
+
+  /* ================= GALLERY ================= */
   const gallery = mediaImages.slice(3);
 
+  /* ================= FILTERS ================= */
   const filters = ["All", "Events", "Media", "Team"];
   const [activeFilter, setActiveFilter] = useState("All");
 
@@ -25,7 +52,6 @@ const Media = () => {
         </div>
       </section>
 
-
       {/* ================= FEATURED ================= */}
       <section className="py-20 bg-[#0a1128]">
         <div className="max-w-7xl mx-auto px-6">
@@ -34,25 +60,32 @@ const Media = () => {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {featured.map((img, i) => (
+            {featured.map((item, i) => (
               <div
                 key={i}
-                className="rounded-xl overflow-hidden bg-[#101f2e] shadow-lg"
+                className="group rounded-xl overflow-hidden bg-[#101f2e] shadow-lg transition-transform duration-300 hover:-translate-y-1"
               >
                 {/* IMAGE */}
-                <div className="w-full h-[260px] bg-black flex items-center justify-center">
+                <div className="relative w-full h-[260px] bg-black overflow-hidden">
                   <img
-                    src={img.default}
-                    alt={`Featured ${i + 1}`}
-                    className="w-full h-full object-contain"
+                    src={item.image.default}
+                    alt={item.title}
+                    className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-[1.04]"
                   />
                 </div>
 
                 {/* TEXT */}
-                <div className="p-4 text-white">
-                  <p className="text-sm text-teal-400">Media Highlight</p>
-                  <p className="font-semibold mt-1">
-                    Koncept Engineers – Industry Engagement
+                <div className="p-5 text-white">
+                  <p className="text-sm text-teal-400 tracking-wide uppercase">
+                    {item.tag}
+                  </p>
+
+                  <p className="font-semibold text-lg mt-1">
+                    {item.title}
+                  </p>
+
+                  <p className="text-sm text-white/60 mt-2 leading-relaxed">
+                    {item.description}
                   </p>
                 </div>
               </div>
@@ -88,16 +121,11 @@ const Media = () => {
                 key={i}
                 className="rounded-xl overflow-hidden bg-[#101f2e] shadow-md"
               >
-                <div className="w-full h-[220px] bg-black flex items-center justify-center">
+                <div className="w-full h-[220px] bg-black flex items-center justify-center overflow-hidden">
                   <img
                     src={img.default}
                     alt={`Gallery ${i + 1}`}
-                    className="
-                      w-full h-full
-                      object-contain
-                      transition-transform duration-300
-                      hover:scale-[1.03]
-                    "
+                    className="w-full h-full object-contain transition-transform duration-300 hover:scale-[1.03]"
                   />
                 </div>
               </div>
