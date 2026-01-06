@@ -5,9 +5,10 @@ import Servicecards from "../Components/Servicescard";
 import AwardsAccoladesSection from "../Components/AwardsAndAccoladesSection";
 import homeref1 from "../assets/homeref1.jpg";
 import homeref2 from "../assets/homeref2.jpg";
-import handBg from "../assets/home.jpg";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+
+const handBg = "home.jpg";
 
 // Auto-import all client images
 const clientImages = Object.values(
@@ -15,10 +16,10 @@ const clientImages = Object.values(
     eager: true,
   })
 );
+
 const half = Math.ceil(clientImages.length / 2);
 const firstRow = clientImages.slice(0, half);
 const secondRow = clientImages.slice(half);
-
 
 const fadeInX = (direction = "left") => ({
   hidden: {
@@ -33,7 +34,9 @@ const fadeInX = (direction = "left") => ({
 });
 
 const Container = ({ children }) => (
-  <div className="max-w-7xl mx-auto px-6 md:px-16">{children}</div>
+  <div className="max-w-7xl mx-auto px-6 md:px-16">
+    {children}
+  </div>
 );
 
 const Home = () => {
@@ -41,7 +44,6 @@ const Home = () => {
     <>
       {/* ================= HERO ================= */}
       <section className="relative h-[650px] md:h-[550px] text-white overflow-hidden bg-[#0C0B26] font-sans">
-
         {/* Smooth background image */}
         <motion.div
           initial={{ opacity: 0, scale: 1.05 }}
@@ -63,7 +65,6 @@ const Home = () => {
           </Container>
         </div>
       </section>
-
 
       <Herostat />
 
@@ -92,7 +93,9 @@ const Home = () => {
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
             >
-              <p className="text-teal-400 uppercase font-semibold mb-2">About Us</p>
+              <p className="text-teal-400 uppercase font-semibold mb-2">
+                About Us
+              </p>
               <h2 className="text-3xl font-bold mb-4">
                 Koncept Engineers: Pioneering Digitalization for a Sustainable Tomorrow.
               </h2>
@@ -131,7 +134,6 @@ const Home = () => {
         />
       </section>
 
-
       {/* ================= SERVICES TEASER ================= */}
       <section className="py-24 bg-[#142132]">
         <Container>
@@ -143,7 +145,9 @@ const Home = () => {
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
             >
-              <p className="text-teal-400 uppercase font-semibold mb-2">Our Services</p>
+              <p className="text-teal-400 uppercase font-semibold mb-2">
+                Our Services
+              </p>
               <h2 className="text-3xl font-bold mb-4">
                 Digitalization for a more efficient, sustainable, and comfortable
                 built environment.
@@ -243,8 +247,7 @@ const Home = () => {
             {firstRow.map((img, index) => (
               <div
                 key={index}
-                className="mx-10 flex items-center justify-center
-                     w-[200px] h-[120px]"
+                className="mx-10 flex items-center justify-center w-[200px] h-[120px]"
               >
                 <img
                   src={img.default}
@@ -270,8 +273,7 @@ const Home = () => {
             {secondRow.map((img, index) => (
               <div
                 key={index}
-                className="mx-10 flex items-center justify-center
-                     w-[200px] h-[120px]"
+                className="mx-10 flex items-center justify-center w-[200px] h-[120px]"
               >
                 <img
                   src={img.default}
@@ -284,8 +286,6 @@ const Home = () => {
         </div>
       </section>
 
-
-
       {/* ================= AWARDS & ACCOLADES ================= */}
       <section className="py-16 bg-gradient-to-r from-[#13263e] via-[#101f2e] to-[#13263e]">
         <Container>
@@ -296,12 +296,10 @@ const Home = () => {
           </div>
         </Container>
 
-        {/* Limit visual height of marquee */}
         <div className="max-w-[95%] mx-auto">
           <AwardsAccoladesSection />
         </div>
       </section>
-
     </>
   );
 };
