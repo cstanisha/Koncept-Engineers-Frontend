@@ -26,8 +26,6 @@ The frontend is built using modern web technologies such as:
 - Framework: React
 - Language: JavaScript 
 - Styling: Tailwind CSS 
-- State Management: Context API 
-- HTTP Client:  Fetch API
 - Package Manager: npm
 
 
