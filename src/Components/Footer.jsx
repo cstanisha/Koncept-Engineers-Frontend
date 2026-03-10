@@ -55,9 +55,6 @@ const Footer = () => {
             <a href="https://www.linkedin.com/" className="hover:text-teal-400" aria-label="LinkedIn">
               <Linkedin />
             </a>
-            <a href="https://www.youtube.com/" className="hover:text-teal-400" aria-label="YouTube">
-              <Youtube />
-            </a>
           </div>
         </div>
 
