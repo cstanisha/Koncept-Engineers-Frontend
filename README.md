@@ -1,12 +1,40 @@
-# React + Vite
+# Koncept Engineers – Frontend
+ 
+ Application for Koncept Engineers, built to provide a modern, responsive, and scalable user interface for interacting with Koncept Engineers services and platform.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains the frontend codebase responsible for delivering the user interface and communicating with backend APIs.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The Koncept Engineers Frontend is designed to deliver a smooth and responsive user experience while maintaining a scalable and maintainable codebase. The application integrates with backend services to provide dynamic content and functionality.
 
-## Expanding the ESLint configuration
+The goal of this frontend is to ensure performance, usability, and consistency across devices.
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Features
+
+- Responsive and modern UI
+- Component-based architecture
+- Integration with backend APIs
+- Environment-based configuration
+- Optimized production build
+- Developer-friendly setup
+
+## Tech Stack
+
+The frontend is built using modern web technologies such as:
+
+- Framework: React
+- Language: JavaScript 
+- Styling: Tailwind CSS 
+- State Management: Context API 
+- HTTP Client:  Fetch API
+- Package Manager: npm
+
+
+## License
+
+This project is proprietary and maintained by Koncept Engineers.
+
+## Maintainers
+
+Koncept Engineers Development Team
