@@ -145,6 +145,7 @@ const ContactUs = () => {
         {/* Address */}
         <div className="bg-[#0f172a] p-8 rounded-xl shadow-lg w-full max-w-lg text-slate-300">
           <h2 className="text-2xl font-semibold text-white mb-4">Visit Us</h2>
+
           <p><strong className="text-slate-200">Office:</strong> Sector 68, IMT Faridabad</p>
           <p><strong className="text-slate-200">Unit 1:</strong> Vardhman Star Mall</p>
           <p><strong className="text-slate-200">Unit 2:</strong> Plot 478, Sector 68</p>
@@ -152,12 +153,14 @@ const ContactUs = () => {
           <iframe
             title="Google Map"
             className="w-full h-48 rounded-lg shadow-md mt-4"
-            src="https://maps.google.com/maps?q=Vardhman%20Star%20Mall,%20Sector%2019,%20Faridabad&output=embed"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28091.638156069133!2d77.33059600609698!3d28.34509745263748!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cdb002f0c1835%3A0x852634c1f1ef1e8b!2sKoncept%20Engineers!5e0!3m2!1sen!2sin!4v1778658913429!5m2!1sen!2sin"
             loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            allowFullScreen
           />
 
           <a
-            href="https://maps.app.goo.gl/9MBWT2XAbzz1Vutw8"
+            href="https://maps.app.goo.gl/etLBA5i9bjuaeXrP9"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-4 block text-center bg-teal-600 hover:bg-teal-700 transition text-white py-2 rounded"
